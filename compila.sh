@@ -19,4 +19,4 @@ gcc -o test libreria.o test.o || handle_error "Error al enlazar los archivos obj
 chmod +x test || handle_error "Error al dar permisos de ejecucion"
 
 #Se avisa al usuario que el script se ha ejecutado con éxito
-echo "Compilación compleltada, puede ejecutar el programa './test'"
+echo "Compilacion compleltada, puede ejecutar el programa './test'"
