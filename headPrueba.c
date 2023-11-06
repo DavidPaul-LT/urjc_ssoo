@@ -12,7 +12,7 @@ void printLine(int n)
     while(counter < n){
         fgets(texto, 100, stdin);
         if(strcmp(storage[counter], "fin\n") == 0){
-            break;9o0o
+            break;
         }
         storage[counter] = &(texto);
         counter++;
