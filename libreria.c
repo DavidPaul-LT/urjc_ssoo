@@ -1,4 +1,4 @@
-#include <libreria.h>
+#include "libreria.h"
 #include <stdio.h>
 
 //Muestra las N primeras líneas en la salida estándar recibidas por la entrada estándar
