@@ -5,37 +5,25 @@
 void printLine(int n)
 {
 
-    printf("COMENZAMOS A ESCANEAR\n");
-    char *storage;
-    char texto[100];
-    int counter = 0;
-    while(counter < n){
-        fgets(texto, 100, stdin);
-        if(strcmp(storage[counter], "fin\n") == 0){
-            break;
+    char text[n][1000];
+    int i = 0;
+    bool sigue = true;
+    while(fgets(text[i], 1000, stdin) != NULL){
+        if(i < n){
+            i++;
         }
-        storage[counter] = &(texto);
-        counter++;
-    };
-    printf("PROCESANDO...\n");
-    for(int i = 0; i < n; i++){
-        printf("en la posicion %i ", i);
-        printf("se encuentra el valor: %s\n", storage[i]);
     }
-    printf("TERMINAMOS EL PROGRAMA\n");
+    printf("\n");
+    printf("Las %i primeras lineas son: \n", n);
 
-    /*printf();
-    printf("Comenzando");
-    while (fgets(line, 100, stdin) != NULL && count < n){
-        printf("%s", line);
-        printf();
-        count++;
-    }*/
-
+    for(int j = 0; j < n; j++){
+        printf("Linea %i, contiene: %s \n",j+1, text[j]);
+    }
 }
 
+
 int main(){
-    int n = 3;
+    int n = 5;
     printLine(n);
     return 0;
 }
