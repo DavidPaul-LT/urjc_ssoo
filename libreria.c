@@ -1,11 +1,18 @@
+#include <string.h>
+#include <stdlib.h>
 #include "libreria.h"
 #include <stdio.h>
 
 //Muestra las N primeras líneas en la salida estándar recibidas por la entrada estándar
 int head(int n){ 
-    //For para ir leyendo las n líneas
-        //Imprimir por pantalla
-    //Fin del for
+                                                                //Recibimos el valor de un entero en la variable [n]
+    char text[1000];                                            //Contiene el valor de la línea a leer, max. 1000 chrts.
+    int i = 0;                                                  //Contador para realizar [n] iteraciones
+    while(fgets(text, 1000, stdin) != NULL && i < n){           //Con cada iteración, se actualiza el contenido de [text]
+        printf("%s", text);
+        i++;                                                    //actualizamos el valor del contador [i]
+    }
+    exit(0);
 }
 
 //Muestra las N últimas líneas en la salida estándar recibidas por la entrada estándar
