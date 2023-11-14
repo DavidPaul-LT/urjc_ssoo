@@ -152,5 +152,5 @@ int longline(int n){
         free(array[i]);                                             //Se libera la memoria de cada elemento del array.
     }
     free(array);                                                    //Se libera la memoria del array.
-    return 0;
+    return 0;
 }
