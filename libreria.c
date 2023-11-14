@@ -51,6 +51,7 @@ int head(int n){
         printf("%s", text);
         i++;                                                       //actualizamos el valor del contador [i]
     }
+    return 0;
 }
 
 //Muestra las N últimas líneas en la salida estándar recibidas por la entrada estándar
@@ -99,6 +100,7 @@ int tail(int n){
         free(array[i]);                                             //Se libera la memoria de cada elemento del array.
     }
     free(array);                                                    //Se libera la memoria del array.
+    return 0;
 }
 
 //Muestra las N líneas más largas recibidas de mayor a menor, o todas ellas si hay menos de N líneas
