@@ -1,6 +1,5 @@
 #include <string.h>
 #include <stdlib.h>
-#include "libreria.h"
 #include <stdio.h>
 
 // Función para intercambiar dos strings
@@ -42,20 +41,21 @@ void quickSort(char* arr[], int low, int high) {
 
 
 //Muestra las N primeras líneas en la salida estándar recibidas por la entrada estándar
-int head(int n){ 
+int head(int n){
+    printf("HEAD\n");
     int lenght = 1024;                                             //Contine el máximo de carácteres que tendrá cada línea a leer
     char text[lenght];                                             //Contiene el valor de la línea a leer en cada iteración
     int i = 0;                                                     //Contador para realizar [n] iteraciones
     //Se lee de la entrada estándar línea por línea hasta que se hayan leído n líneas.
     while(fgets(text, lenght, stdin) != NULL && i < n){
-        printf("%s", text);
+        printf("·%s", text);
         i++;                                                       //actualizamos el valor del contador [i]
     }
-    return 0;
 }
 
 //Muestra las N últimas líneas en la salida estándar recibidas por la entrada estándar
 int tail(int n){
+    printf("TAIL\n");
     int l = 1;                                                     //tamaño actual del array
     int i = 0;                                                     //Índice actual
     char** array;                                                  //Se declara un array de punteros a char.
@@ -96,28 +96,28 @@ int tail(int n){
 
     // Se imprime el contenido del array.
     for(int i = 0; i < l; i++){
-        printf("·%s\n", array[i]);
+        printf("·%s", array[i]);
         free(array[i]);                                             //Se libera la memoria de cada elemento del array.
     }
     free(array);                                                    //Se libera la memoria del array.
-    return 0;
+    rewind(stdin);                                                  //Restablece al inicio la posicion del puntero que lee stdin
 }
 
-//Muestra las N líneas más largas recibidas de mayor a menor, o todas ellas si hay menos de N líneas
-int longline(int n){
+int longlines(int n){
+    printf("LONGLINES");
     int l = 1;                                                     //tamaño actual del array
     int i = 0;                                                     //Índice actual
-    char** array;                                                  //Se declara un array de punteros a char.
+    char** arrayll;                                                //Se declara un array de punteros a char.
     int length = 1024;                                             //Tamaño máximo de cada línea.
     char textO[length];                                            //Para almacenar el string recibido de la stdin
-    array = (char*) malloc(l*sizeof(char));                      //Se reserva memoria para el array.
+    arrayll = (char**) malloc(l*sizeof(char*));                    //Se reserva memoria para el array.
     // Control de error por asignación de memoria * 
-    if(array == NULL){                                             //*
+    if(arrayll == NULL){                                             //*
         fprintf(stderr, "Error al asignar memoria. \n");
         exit(1);
     }
-    array[i] = (char*) malloc(length * sizeof(char));              //Se reserva memoria para el primer elemento del array.
-    if(array[i] == NULL) {                                         //*
+    arrayll[i] = (char*) malloc(length * sizeof(char));              //Se reserva memoria para el primer elemento del array.
+    if(arrayll[i] == NULL) {                                         //*
         fprintf(stderr, "Error al asignar memoria al elemento.\n");
         exit(1);
     }
@@ -128,29 +128,29 @@ int longline(int n){
         if(l < n){
             l++;
             i++;
-            array = (char*) realloc(array, l*sizeof(char));      //Se reserva memoria para el array (+1 tamaño).
-            if(array == NULL){                                     //*
+            arrayll = (char**) realloc(arrayll, l*sizeof(char*));      //Se reserva memoria para el array (+1 tamaño).
+            if(arrayll == NULL){                                     //*
                 fprintf(stderr, "Error al asignar memoria al array con un elemento nuevo. \n");
                 exit(1);
             }
-            array[l-1] = (char*) malloc(length * sizeof(char));    //Se reserva memoria para el nuevo elemento del array.
-            if(array[l-1] == NULL) {                               //*
+            arrayll[l-1] = (char*) malloc(length * sizeof(char));    //Se reserva memoria para el nuevo elemento del array.
+            if(arrayll[l-1] == NULL) {                               //*
                 fprintf(stderr, "Error al asignar memoria al elemento nuevo.\n");
                 exit(1);
             }
         }
         // Si el número de caractéres del string de la última posición del array es menor al de la línea recibida por el stdin 
-        if(strlen(array[i]) < strlen(textO)){
-            strcpy(array[i], textO);                               //copiar el valor de textO al array en la posicion i 
-            quickSort(array, 0, l-1);                              //Se ordena el array actual, dependiendo del tamaño de los strings high > low
+        if(strlen(arrayll[i]) < strlen(textO)){
+            strcpy(arrayll[i], textO);                               //copiar el valor de textO al array en la posicion i 
+            quickSort(arrayll, 0, l-1);                              //Se ordena el array actual, dependiendo del tamaño de los strings high > low
         }
     }
 
     // Se imprime el contenido del array.
     for(int i = 0; i < l; i++){
-        printf("\n%s", array[i]);
-        free(array[i]);                                             //Se libera la memoria de cada elemento del array.
+        printf("\n%s", arrayll[i]);
+        free(arrayll[i]);                                             //Se libera la memoria de cada elemento del array.
     }
-    free(array);                                                    //Se libera la memoria del array.
-    return 0;
+    free(arrayll);                                                    //Se libera la memoria del array.
+    rewind(stdin);                                                    //Restablece al inicio la posicion del puntero que lee stdin
 }
