@@ -9,11 +9,11 @@ handle_error(){
 #Compilar los archivos de la librería
 gcc libreria.c -c -o libreria.o || handle_error "Error al compilar la libreria"
 
-#Compilar los archivos de test
-gcc test.c -c -o test.o || handle_error "Error al compilar el test"
+#Crear la librería
+ar -rv libreria.a libreria.o
 
-#Enlazar los archivos objeto
-gcc -o test libreria.o test.o || handle_error "Error al enlazar los archivos objeto"
+#Compilar el programa que usa la librería
+gcc -o test test.c libreria.a || handle_error "Error al compilar el programa de test"
 
 #Dar permiso al archivo ejecutable
 chmod +x test || handle_error "Error al dar permisos de ejecucion"
