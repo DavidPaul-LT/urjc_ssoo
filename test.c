@@ -8,7 +8,7 @@ int main(int argc, char const *argv[], char *envp[]){
         return 1;
     } 
     else{   
-        if(argv[1][1] != "-"){
+        if(argv[1][0] != "-"){
             printf("ERROR --> Argumeto invalido");
             return 1;
         }
@@ -45,5 +45,4 @@ int main(int argc, char const *argv[], char *envp[]){
             }
         }
     }
-
 }
