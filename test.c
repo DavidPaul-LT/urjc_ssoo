@@ -10,7 +10,6 @@ int main(int argc, char const *argv[], char *envp[]){
     } 
     else{
         if(argv[1][0] != '-'){
-            printf("%c \n", argv[1][0]);
             printf("ERROR --> Argumeto invalido");
             return 1;
         }
@@ -31,9 +30,7 @@ int main(int argc, char const *argv[], char *envp[]){
                 }
             }else{
                 lineas = 10;
-                printf("%i", lineas);
             }
-
             if(strcmp(funcionSel, "-head")==0){
                 head(lineas);
                 return 0;
