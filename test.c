@@ -10,7 +10,7 @@ int main(int argc, char const *argv[], char *envp[]){
     } 
     else{
         if(argv[1][0] != '-'){
-            printf("ERROR --> Argumeto invalido");
+            printf("ERROR --> Argumeto invalido\n");
             return 1;
         }
         else{
